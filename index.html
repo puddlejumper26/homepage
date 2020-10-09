@@ -10,41 +10,41 @@
     <link rel="shortcut icon" href="img/favicon.ico">
     <title>Home | Xiang WU</title>
     <style>
-    .navbar{position: fixed;top: 0;width: 100%;z-index: 99;}
-    .container{margin-top:120px;}
-    @media only screen and (min-width: 320px){html {font-size: 62.5%!important;}}
-    @media only screen and (min-width: 360px){html {font-size: 72.5%!important;}}
-    @media only screen and (min-width: 400px){html {font-size: 82.5%!important;}}
-    @media only screen and (min-width: 480px){html {font-size: 94%!important;}}
- 
- /*Moving blue chips*/   
-    #wrap {width: 100%;  display: flex;justify-content: center;}
-    #wrap div {width: 8px;height: 50px;background-color: rgb(95, 194, 224);float: left;margin-left: 1px;border-radius: 10%;-webkit-animation: fadeOut 1s infinite ease-in-out;}
+        .navbar{position: fixed;top: 0;width: 100%;z-index: 99;}
+        .container{margin-top:120px;}
+        @media only screen and (min-width: 320px){html {font-size: 62.5%!important;}}
+        @media only screen and (min-width: 360px){html {font-size: 72.5%!important;}}
+        @media only screen and (min-width: 400px){html {font-size: 82.5%!important;}}
+        @media only screen and (min-width: 480px){html {font-size: 94%!important;}}
 
-    @-webkit-keyframes fadeOut 
-    {
-        0%,
-        40%,
-        100% {
-            -webkit-transform: scaleY(0.4);
+    /*Moving blue chips*/
+        #wrap {width: 100%;  display: flex;justify-content: center;}
+        #wrap div {width: 8px;height: 50px;background-color: rgb(95, 194, 224);float: left;margin-left: 1px;border-radius: 10%;-webkit-animation: fadeOut 1s infinite ease-in-out;}
+
+        @-webkit-keyframes fadeOut
+        {
+            0%,
+            40%,
+            100% {
+                -webkit-transform: scaleY(0.4);
+            }
+            20% {
+                -webkit-transform: scaleY(1);
+            }
         }
-        20% {
-            -webkit-transform: scaleY(1);
-        }
-    }
-    #wrap .line1 {-webkit-animation-delay: -0.9s;}
-    #wrap .line2 {-webkit-animation-delay: -0.8s;}
-    #wrap .line3 {-webkit-animation-delay: -0.7s;}
-    #wrap .line4 {-webkit-animation-delay: -0.8s;}
-    #wrap .line5 {-webkit-animation-delay: -0.9s;}
- 
- /* clock */
-    div#clock{width:100%;text-align:center;background:#504e4e;margin:10px auto;padding:20px 0;color:#fff;}
-    div#clock span{color:#000;width:80px;line-height:2;background:#fbfbfb;border:2px solid #b4b4b4;margin:0 10px;padding:0 10px;}
+        #wrap .line1 {-webkit-animation-delay: -0.9s;}
+        #wrap .line2 {-webkit-animation-delay: -0.8s;}
+        #wrap .line3 {-webkit-animation-delay: -0.7s;}
+        #wrap .line4 {-webkit-animation-delay: -0.8s;}
+        #wrap .line5 {-webkit-animation-delay: -0.9s;}
+
+    /* clock */
+        div#clock{width:100%;text-align:center;background:#504e4e;margin:10px auto;padding:20px 0;color:#fff;}
+        div#clock span{color:#000;width:80px;line-height:2;background:#fbfbfb;border:2px solid #b4b4b4;margin:0 10px;padding:0 10px;}
     </style>
-</head> 
+</head>
 <body>
-    
+
     <!-- nav bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="box-shadow: 10px 10px 5px #888888;">
         <a class="navbar-brand" href="#" style="font-family:Arial, Helvetica, sans-serif">Xiang's Website</a>
@@ -52,7 +52,7 @@
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -70,8 +70,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contents/about.html" target="blank">CV</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contents/showcases.html" >Show
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://github.com/puddlejumper26/blogs/issues/145" target="_blank">Show
                         Cases</a>
                 </li>
                 <li class="nav-item">
@@ -91,9 +91,9 @@
 
 
 <div class="container">
-    
+
     <div class="jumbotron" style="box-shadow: 5px 5px 5px 5px #888888;">
-       
+
         <img src="img/background.jpg" style="width:100%">
     </div>
 
