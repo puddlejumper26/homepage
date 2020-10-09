@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../Styles/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <title>Show Cases | Xiang WU</title>
+    <style>
+
+    .navbar{position: fixed;top: 0;width: 100%;z-index: 99;}
+    .container{margin-top:120px;}
+    button{margin:0.5px;}
+     /*add the floarting right window*/
+        .float{width: 100px;height: 80px;background: rgba(250,250,250, 0.6);position: absolute;right: 0;bottom: 0;z-index:99;text-align:center;line-height:80px;border-radius:10px;font-weight:900;font-size:25px;}
+        .float:hover{background: rgba(97, 88, 88, 0.2)}
+
+    @media only screen and (min-width: 320px){html {font-size: 62.5%!important;}}
+    @media only screen and (min-width: 360px){html {font-size: 72.5%!important;}}
+    @media only screen and (min-width: 400px){html {font-size: 82.5%!important;}}
+    @media only screen and (min-width: 480px){html {font-size: 94%!important;}}
+    
+    .col-md-4{margin-top:15px;}
+
+    </style>
+</head>
+<script>
+        window.onscroll = function () {
+                //The onscroll event occurs when an element's scrollbar is being scrolled.
+                //1,给浏览器的滚动添加事件，onscollTop事件
+                var oDiv = document.getElementById('float');
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; // 取整体的高度
+                //The scrollTop property sets or returns the number of pixels an element's content is scrolled vertically.
+                //The documentElement property returns the documentElement of the document, as an Element object.
+                //可视区域的高度减掉物体高度再加上向上滚动的高度
+                //  oDiv.style.top = document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop+'px';
+
+                // 如果想其在屏幕中间，则
+                //oDiv.style.top = (document.documentElement.clientHeight-oDiv.offsetHeight)/2+scrollTop+'px';
+                // 否则就是在屏幕的右下角
+                // 注意，这个时候的红色区域是在中间不断地抖动，是因为 /2 会产生0.5，那么最后就会不停地跳动
+                //    starMove((document.documentElement.clientHeight-oDiv.offsetHeight)/2 +scrollTop)
+                //	所以需要添加一个 parseInt，
+                starMove(parseInt((document.documentElement.clientHeight - oDiv.offsetHeight) + scrollTop))
+        };
+
+        var timer = null;
+
+        function starMove(iTarget) {
+
+                var oDiv = document.getElementById('float');
+                clearInterval(timer);
+                timer = setInterval(function () {
+
+                        var speed = (iTarget - oDiv.offsetTop) / 4;
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                        if (oDiv.offsetTop == iTarget) {
+
+                                clearInterval(timer)
+                        }
+                        else {
+                                oDiv.style.top = oDiv.offsetTop + speed + 'px';
+                        }
+                }, 30)
+        }       
+</script>
+<body>
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="box-shadow: 10px 10px 5px #888888;">
+        <a class="navbar-brand" href="#" style="font-family:Arial, Helvetica, sans-serif">Xiang's Website</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link"> <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="projects.html">Projects</a>
+                </li>
+                <li class="nav-item">
+<!--                     <a class="nav-link" href="https://puddlejumper26.github.io/js-showcases/resources/personaldoc/CV-XiangWU-de.pdf" target="blank">CV</a> -->
+                     <a class="nav-link" href="contents/about.html" target="blank">CV</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="showcases.html">Show
+                        Cases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="certificates.html">Certificates</a>
+                </li>
+                <li class="nav-item">
+<!--                     <a class="nav-link" href="https://puddlejumper26.github.io/xiangblog/" target="blank">Blog</a> -->
+                         <a class="nav-link" href="https://github.com/puddlejumper26/blogs/blob/master/README.md" target="blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" href="private.html" target="blank">private</a>
+                </li>
+            </ul>
+        </div>
+        <img src="../img/nav.png">
+    </nav>
+
+    <div class="container">
+        <!-- build the github link on the upright corner -->
+        <a href="https://github.com/puddlejumper26" target="blank"><img style="position: fixed; top: 90px; right: 0; border: 0;"
+        src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkgray_121621.png" alt="Fork me on GitHub"></a>
+
+        <div class="jumbotron" style="box-shadow: 5px 5px 5px 5px #888888;">
+            <h3 class="display-4">Show Cases</h3>
+            <hr class="my-4"> These are the basic show cases and notes of JS and CSS, with basic skills and codes
+            <p class="lead">
+
+            </p>
+        </div>
+
+        <!-- Hyperlink - button  -->
+        <hr><hr>
+        <a href="#javascript"><button type="button" class="btn btn-outline-primary">JS</button></a>
+        <a href="#js-func-eslint"><button type="button" class="btn btn-outline-primary">JS-Func-Eslint</button></a>
+        <a href="#js-old"><button type="button" class="btn btn-outline-primary">js-old</button></a>
+        <a href="#css"><button type="button" class="btn btn-outline-primary">CSS</button></a>
+        <a href="#jquery"><button type="button" class="btn btn-outline-primary">jquery</button></a>
+        <a href="#game"><button type="button" class="btn btn-outline-primary">game</button></a>
+        <a href="#svg"><button type="button" class="btn btn-outline-primary">svg</button></a>
+        <a href="#regexp"><button type="button" class="btn btn-outline-primary">regexp</button></a>
+        <a href="#algorithms"><button type="button" class="btn btn-outline-primary">algorithms</button></a>
+
+        <hr>
+        <hr>
+
+        <!-- floating right window -->
+        <div class="float" id="float">
+                <p class="pull-right"><a href="#">Top</a></p>
+        </div>
+
+        <div  id="javascript"></div>
+        <!-- creat two rows and use col-md-4 to divide into three columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                        <a class="list-group-item list-group-item-action active" style=" color:white;font-weight: bold; text-align: center">MDN Part  1</a>
+                                       
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/05jokemaker.html"
+                target="_blank">笑话生成器<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/06日历if.html"
+                        target="_blank">日历if<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/07颜色switch.html"
+                        target="_blank">颜色switch<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/08倒计时.html"
+                        target="_blank">倒计时<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/09名单循环.html"
+                        target="_blank">名单循环<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/10callback.html"
+                        target="_blank">callback<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/11函数构造.html"
+                        target="_blank">函数构造<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/12返回值.html" target="_blank">返回值<span
+                                class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/13事件介绍.html"
+                        target="_blank">事件介绍<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/14addEventListener.html"
+                        target="_blank">addEventListener<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/15照片库/index.html"
+                        target="_blank">照片库<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/16对象基础.html" target="_blank">对象基础<span
+                                class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/17对象原型.html"
+                        target="_blank">对象原型<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/18json示例.html"
+                        target="_blank">Json 实例<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/19小彩球/19小彩球.html"
+                        target="_blank">小彩球<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/20彩球恶魔圈/index.html"
+                        target="_blank">彩球恶魔圈<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/21异步can store/can-store.html"
+                        target="_blank">异步 can store<span class="badge badge-success">click!</span>
+                </a>
+
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+            <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                <a class="list-group-item list-group-item-action active" style=" color:white;font-weight: bold; text-align: center">MDN Part 2</a>
+            
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/22xhrStatus.html" target="_blank">xhrStatus<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/23异步代码.html" target="_blank">异步代码<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/24异步setTimeout.html" target="_blank">异步 setTimeout<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/25异步setInterval秒表.html" target="_blank">异步setInterval秒表<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/26异步promise.html" target="_blank">异步promise<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/27异步Blob.html" target="_blank">异步Blob<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/28异步await async.html" target="_blank">异步await async<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/29WebApiDom.html" target="_blank">WebApiDom<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/30WebApi获取信息/30WebApi获取信息.html" target="_blank">WebApi获取信息<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/31WebApi购物清单.html" target="_blank">WebApi购物清单<span class="badge badge-success">click!</span>
+                </a>
+                 <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/32WebApiAjax/32WebApiAjax.html"
+                        target="_blank">WebApiAjax<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/33WebApiMap.html" target="_blank">WebApiMap<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action"
+                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/js-mdn/34WebApiNYT.html" target="_blank">WebApiNYT<span class="badge badge-success">click!</span>
+                </a>
+            
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                        <a class="list-group-item list-group-item-action active"
+                                style=" color:white;font-weight: bold; text-align: center">JS Knowledge in MindMap</a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/Array20190717.png"
+                                target="_blank">Array<span class="badge badge-success">click!</span>
+                        </a>
+                                <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/Asynchronous20190717.png"
+                                target="_blank">Asynchronous<span class="badge badge-success">click!</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/BOM20190716.png"
+                                target="_blank">BOM<span class="badge badge-success">click!</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/Date20190717.png"
+                                target="_blank">Date<span class="badge badge-success">click!</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/DOM20190716.png"
+                                target="_blank">DOM<span class="badge badge-success">click!</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/Function20190717.png"
+                                target="_blank">Function<span class="badge badge-success">click!</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/Math20190717.png"
+                                target="_blank">Math<span class="badge badge-success">click!</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/Number20190717.png"
+                                target="_blank">Number<span class="badge badge-success">click!</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/Object20190717.png"
+                                target="_blank">Object<span class="badge badge-success">click!</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/ObjectCreation20190717.png"
+                                target="_blank">Object Creation<span class="badge badge-success">click!</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/Operator20190717.png"
+                                target="_blank">Operator<span class="badge badge-success">click!</span>
+                        </a>
+                        <a class="list-group-item list-group-item-action"
+                                href="https://puddlejumper26.github.io/js-showcases/showcases/js/xmind/String20190717.png"
+                                target="_blank">String<span class="badge badge-success">click!</span>
+                        </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="js-func-eslint"></div>
+        <hr>
+        <div class="row">
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">JS Function</a>
+        
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/js/basics/js-function.html"
+                                        target="_blank">JS Function<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/js/basics/js-function-es5.js"
+                                        target="_blank">JS-Function-ES5.js<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/js/basics/js-function-es6.js"
+                                        target="_blank">JS-Function-ES6.js<span class="badge badge-success">click!</span>
+                                </a>
+        
+                        </div>
+                </div>
+
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">JS Eslint</a>
+        
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://segmentfault.com/a/1190000014992938"
+                                        target="_blank">EsLint入门学习整理<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://www.youtube.com/watch?v=lHAeK8t94as&t=195s"
+                                        target="_blank">WesBos Eslint & Prettier<span class="badge badge-success">click!</span>
+                                </a>
+
+        
+                        </div>
+                </div>                
+        
+        </div>
+
+        <div id="js-old"></div>
+        <hr ><hr>
+        <div class="row" >
+            <div class="col-md-4">
+                <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                    <a class="list-group-item list-group-item-action active" style=" color:white;font-weight: bold; text-align: center">JS OLD Part  1
+                    </a>
+                                       
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_1_div_attribution.html"
+                        target="_blank">div_attribution<span class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_2_webpage_change_color.html" target="_blank">webpage_change_color<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_3_onmouseover_out.html" target="_blank">onmouseover_out<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_4_sum.html" target="_blank">sum<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_5_popwindow.html" target="_blank">popwindow<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_6_buttonshow.html" target="_blank">buttonshow<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_7_tab.html" target="_blank">tab<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_8_checkbox.html" target="_blank">checkbox<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_9_counting.html" target="_blank">counting<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_10_join.html" target="_blank">join<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_11_getcomputedstyle取非行间样式.html" target="_blank">getcomputedstyle取非行间样式<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_12_getcomputedstyle取非行间样式2.html" target="_blank">getcomputedstyle取非行间样式2<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_13_getcomputedstyle取非行间样式3.html" target="_blank">getcomputedstyle取非行间样式3<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_14_getcomputedstyle取非行间样式4.html" target="_blank">getcomputedstyle取非行间样式4<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_15_arr_sort数组排序.html" target="_blank">arr_sort数组排序<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_16_arr_splice.html" target="_blank">arr_splice<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_17_arr_concat_connect.html" target="_blank">concat_connect<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_18_arr_pop_delete.html" target="_blank">arr_pop_delete<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_19_arr_push_add.html" target="_blank">arr_push_add<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_19_1_all_array_points.html" target="_blank">all_array_points<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_20_math_round.html" target="_blank">math_round<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_21_json.html" target="_blank">json<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson1/1_22_css_vertical_align_23_not completed.html" target="_blank">css_vertical_align_23_not completed<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+            <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                <a class="list-group-item list-group-item-action active" style=" color:white;font-weight: bold; text-align: center">JS OLD Part 2</a>
+            
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_1_input_hightlight.html" target="_blank">input_hightlight<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_2_star_rating.html" target="_blank">star_rating<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_3_stop_right_menu.html" target="_blank">stop_right_menu<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_4_add_right_menu.html" target="_blank">add_right_menu<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_5_keycode.html" target="_blank">keycode<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_6_keyboard_control_move.html"
+                    target="_blank">keyboard_control_move<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_7_drag_simple.html" target="_blank">drag_simple<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_8_drag_limt.html" target="_blank">drag_limt<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_9_drag_parameter.html" target="_blank">drag_parameter<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_10_drag_limit_mag.html" target="_blank">drag_limit_mag<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_11_drag_dashbox.html" target="_blank">drag_dashbox<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_12_drag_two.html" target="_blank">drag_two<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_13_drag_resize.html" target="_blank">drag_resize<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_14_scrollbar_size_opa.html"
+                    target="_blank">scrollbar_size_opa<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_15_scrollbar_content.html"
+                    target="_blank">scrollbar_content<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_16_scrollbar_complex.html"
+                    target="_blank">scrollbar_complex<span class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_16_scrollbar_simple.html" target="_blank">scrollbar_simple<span
+                        class="badge badge-success">click!</span>
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson4/4_17_mouse_follower_track.html"
+                    target="_blank">mouse_follower_track<span class="badge badge-success">click!</span>
+                </a>
+            
+            </div>
+            </div>
+            <div class="col-md-4">
+                <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                    <a class="list-group-item list-group-item-action active" style=" color:white;font-weight: bold; text-align: center">JS OLD Part 3</a>
+            
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_1_calculator.html"
+                        target="_blank">calculator<span class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_2_countdown.html" target="_blank">countdown<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_3_clock.html"
+                        target="_blank">clock<span class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_4_clock_pic.html" target="_blank">clock_pic<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_5_clock_silver_complex.html"
+                        target="_blank">clock_silver_complex<span class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_6_clock_silver-simple.html"
+                        target="_blank">clock_silver-simple<span class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_7_autoplay_hor.html"
+                        target="_blank">autoplay_hor<span class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_8_autoplay_hor_simple.html" target="_blank">autoplay_hor_simple<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_9_autoplay_ver_complex.html" target="_blank">autoplay_ver_complex<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_9_autoplay_ver_simple.html" target="_blank">autoplay_ver_simple<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_10_autoplay_ver_move_anyvalue.html" target="_blank">autoplay_ver_move_anyvalue<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_11_move_chain.html" target="_blank">move_chain<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_12_tudou_right_corner_click_move_chain.html" target="_blank">tudou_right_corner_click_move_chain<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_13_move_perfect.html" target="_blank">move_perfect<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_14_autoplay_taobao_move_perfect.html" target="_blank">autoplay_taobao_move_perfect<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_15_autoplay_ver_reverser_zhengfan.html" target="_blank">autoplay_ver_reverser_zhengfan<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson3/3_16_autoplay_reverse_pop.html"
+                        target="_blank">autoplay_reverse_pop<span class="badge badge-success">click!</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+     
+        <hr>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                    <a class="list-group-item list-group-item-action active" style=" color:white;font-weight: bold; text-align: center">JS OLD Part 4</a>
+                
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson2/2_1_calendar.html" target="_blank">calendar<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson2/2_2_onmouseover_pop.html" target="_blank">onmouseover_pop<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson2/2_3_onmouseover_move.html" target="_blank">onmouseover_move<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson2/2_4_parseInt_number.html" target="_blank">parseInt_number<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson2/2_5_compare_number.html" target="_blank">compare_number<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson2/2_6_double_digit.html" target="_blank">double_digit<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson2/2_7_settimeout.html" target="_blank">settimeout<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson2/2_8_sidebar.html" target="_blank">sidebar<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson2/2_9_without-offset.html" target="_blank">without-offset<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson2/2_10_right_float_window.html"
+                        target="_blank">right_float_window<span class="badge badge-success">click!</span>
+                    </a>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                    <a class="list-group-item list-group-item-action active" style=" color:white;font-weight: bold; text-align: center">JS OLD Part 5</a>
+        
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson5/5_1_weibo_simple.html"
+                        target="_blank">weibo_simple<span class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson5/5_2_weibo_complex_NC.html" target="_blank">weibo_complex_NC<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson5/5_3_mouseover_bigpic.html" target="_blank">mouseover_bigpic<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                    <a class="list-group-item list-group-item-action active" style=" color:white;font-weight: bold; text-align: center">JS OLD Part 6</a>
+        
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson6/6_1_dom_creat_li.html"
+                        target="_blank">dom_creat_li<span class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson6/6_2_dom_creat_li_before.html" target="_blank">dom_creat_li_before<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson6/6_3_dom_removeChild.html" target="_blank">dom_removeChild<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson6/6_4_dom_table_point_with_color.html" target="_blank">dom_table_point_with_color<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson6/6_5_dom_table_add_delete.html" target="_blank">dom_table_add_delete<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson6/6_6_dom_table_search.html" target="_blank">dom_table_search<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson6/6_7_dom_table_order.html" target="_blank">dom_table_order<span
+                            class="badge badge-success">click!</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="game"></div>
+        <hr><hr>
+        
+        <div class="row" >
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">Game</a>
+        
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson9game/flappybird/flappy.html"
+                                        target="_blank">Flappy Bird - canvas<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/basic_showcases/lesson9game/pingpong/index.html"
+                                        target="_blank">Ping Pong - canvas<span class="badge badge-success">click!</span>
+                                </a>
+                              
+                        </div>
+        
+                </div>
+
+        </div>
+
+        <div id="css"></div>
+        <hr><hr>
+        
+        <div class="row" >
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">BaiDu CSS</a>
+        
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/baidu/01csstransition.html"
+                                        target="_blank">CSS - Transition<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/baidu/02csstransform2d.html"
+                                        target="_blank">CSS - Transform - 2D<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/baidu/03csstransitiontransform.html"
+                                        target="_blank">CSS - Transform - Transition-Cat<span class="badge badge-success">click!</span>
+                                </a>
+                        </div>
+        
+                </div>
+
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">CSS</a>
+                
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/01bigwhite.html"
+                                        target="_blank">Big White<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/02css2d.html" target="_blank">CSS 2D
+                                        White<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/03css3d.html" target="_blank">CSS 3D
+                                        White<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/04transform-origin.html"
+                                        target="_blank">Transform-Origin<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/05matrix.html"
+                                        target="_blank">Matrix<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/06perspective.html"
+                                        target="_blank">Perspective<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/07transform旋转木马.html"
+                                        target="_blank">旋转木马<span class="badge badge-success">click!</span>
+                                </a>
+                                 <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/08呼吸灯.html"
+                                        target="_blank">呼吸灯<span class="badge badge-success">click!</span>
+                                </a>
+                                 <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/09phonebutton.html"
+                                        target="_blank">Phone Button<span class="badge badge-success">click!</span>
+                                </a>
+                                 <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/old/10starwar.html"
+                                        target="_blank">Star Wars<span class="badge badge-success">click!</span>
+                                </a>
+                
+                        </div>
+                
+                </div>
+
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">CSS揭秘（书）</a>
+                
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/css/css-secrets/css-secrets.html"
+                                        target="_blank">CSS Secrets (Updating)<span class="badge badge-success">click!</span>
+                                </a>
+                
+                
+                        </div>
+                
+                </div>
+        
+        </div>
+
+        <div id="jquery"></div>
+       <hr><hr>
+        
+        <div class="row" >
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">jQuery</a>
+                
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/jquery/demo.html" target="_blank">Demo
+                                       <span class="badge badge-success">click!</span>
+                                </a>
+                
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/jquery/module1.html" target="_blank">Module 1
+                                        <span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/jquery/module2.html" target="_blank">Module 2
+                                        <span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/jquery/module3.html" target="_blank">Module 3
+                                        <span class="badge badge-success">click!</span>
+                                </a>
+                
+                        </div>
+                
+                </div>
+
+
+
+        </div>
+
+        <div id="svg"></div>
+       <hr><hr>
+        
+        <div class="row">
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">SVG</a>
+        
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/SVG/MDN/01.html"
+                                        target="_blank">01<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/SVG/MDN/arc.html"
+                                        target="_blank">arc<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/SVG/MDN/bezier.html" target="_blank">bezier<span
+                                                class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/SVG/MDN/d.html" target="_blank">d<span
+                                                class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/SVG/MDN/gradients.html" target="_blank">gradients<span
+                                                class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/SVG/MDN/pattern.html" target="_blank">pattern<span
+                                                class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/SVG/MDN/svgcss.html" target="_blank">svgcss<span
+                                                class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/projects/MPP/SVG/MDN/texts.html" target="_blank">texts<span
+                                                class="badge badge-success">click!</span>
+                                </a>
+
+                        </div>
+        
+                </div>
+        
+        </div>
+
+        <div id="regexp"></div>
+        <hr>
+        <hr>
+        
+        <div class="row">
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">RegExp</a>
+        
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/resources/books/02-JS/JavaScriptRegExp.pdf"
+                                        target="_blank">JS RegExp PDF<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24"
+                                        target="_blank">RegExp online Visualizer (better)<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://regexper.com/"
+                                        target="_blank">RegExp online Visualizer <span class="badge badge-success">click!</span>
+                                </a>
+                        </div>
+                </div>
+               
+        </div>
+
+        <div id="algorithms"></div>
+        <hr><hr>
+        
+        <div class="row">
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">LeetCode</a>
+        
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/algorithms/leetcode/leetcode-algorithms.html"
+                                        target="_blank">Leetcode Algorithms<span class="badge badge-success">click!</span>
+                                </a>
+
+                        </div>
+                </div>
+                
+                <div class="col-md-4">
+                        <div class="list-group" style="box-shadow: 5px 5px 5px 5px #888888;">
+                                <a class="list-group-item list-group-item-action active"
+                                        style=" color:white;font-weight: bold; text-align: center">JS Algorithms and Structure</a>
+                
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/algorithms/basics/stack-进制转换-回文.html"
+                                        target="_blank">stack-进制转换-回文<span class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/algorithms/basics/queue.html"
+                                        target="_blank">Queue<span
+                                                class="badge badge-success">click!</span>
+                                </a>
+                                <a class="list-group-item list-group-item-action"
+                                        href="https://puddlejumper26.github.io/js-showcases/showcases/algorithms/basics/linkedlist.html"
+                                        target="_blank">Linked List 链表<span class="badge badge-success">click!</span>
+                                </a>
+                        </div>
+                </div>
+        </div>
+
+
+  
+
+        <blockquote class="blockquote text-center" style="margin:20px;">
+            <p class="mb-0"></p>
+            <footer class="blockquote-footer">© 2019 | Puddlejumper26 —<cite title="Source Title"></cite></footer>
+        </blockquote>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
