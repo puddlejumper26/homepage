@@ -1,5 +1,7 @@
 <h1 align="center"> Personal Website </h1>
 
+## Link to the Site ==> Please Click [Homepage](https://puddlejumper26.github.io/homepage/index.html)
+
 ## Description
 This is Puddlejumper26's personal website, to note down my personal activities, but major parts realted to the study and coding are inside my [Tech Blog](https://github.com/puddlejumper26/blogs#puddlejumper26s-blog-).
 
