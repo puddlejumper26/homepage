@@ -10,6 +10,28 @@
     <link rel="shortcut icon" href="img/favicon.ico">
     <title>Home | Xiang WU</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #video-container{
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        #video-container > video {
+            min-width: 100%;
+            min-height: 100%;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+        }
+
         .navbar{position: fixed;top: 0;width: 100%;z-index: 99;}
         .container{margin-top:120px;}
         @media only screen and (min-width: 320px){html {font-size: 62.5%!important;}}
@@ -39,7 +61,7 @@
         #wrap .line5 {-webkit-animation-delay: -0.9s;}
 
     /* clock */
-        div#clock{width:100%;text-align:center;background:#504e4e;margin:10px auto;padding:20px 0;color:#fff;}
+        div#clock{width:100%;text-align:center;margin:10px auto;padding:20px 0;color:#fff;}
         div#clock span{color:#000;width:80px;line-height:2;background:#fbfbfb;border:2px solid #b4b4b4;margin:0 10px;padding:0 10px;}
     </style>
 </head>
@@ -92,9 +114,13 @@
 
 <div class="container">
 
-    <div class="jumbotron" style="box-shadow: 5px 5px 5px 5px #888888;">
+    <!-- <div class="jumbotron" style="box-shadow: 5px 5px 5px 5px #888888;">
 
         <img src="img/background.jpg" style="width:100%">
+    </div> -->
+    <div id="video-container">
+        <video preload="auto" autoplay="autoplay" type="video/mp4" src="img/ranbing.mp4" loop></video>
+        <!-- <img src="img/universe.gif" alt="background pic"> -->
     </div>
 
     <!-- clock -->
